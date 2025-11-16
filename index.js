@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const { connectDB } = require("./src/db");
 const app = express();
 const cors = require("cors");
-const userRouter = require("./src/routes/user.route");
+const router = require("./src/routes/user.route");
 // const { router: authRouter } = require("./router/auth.router");
 // const { router: ticketRouter } = require("./router/ticket.router");
 
@@ -13,7 +13,8 @@ const HOST = "127.0.0.1";
 app.use(cors({ origin: ["http://localhost:5173"] }));
 app.use(bodyParser.json());
 
-app.use("/user", userRouter);
+app.use("/", router);
+app.use("/user", router);
 // app.use("/auth", authRouter);
 // app.use("/ticket", ticketRouter);
 

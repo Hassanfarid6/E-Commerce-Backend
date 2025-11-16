@@ -1,4 +1,4 @@
-const { connectDB } = require("../../db");
+const { getDB } = require("../../db");
 const { ObjectId } = require("mongodb");
 
 const getStart = async (req, res) => {
@@ -10,9 +10,9 @@ const getStart = async (req, res) => {
   }
 };
 
-const getAllUsers = async (req, res) => {
+const getAllCard = async (req, res) => {
   try {
-    const db = await connectDB();
+    const db = await getDB();
     const users = await db.collection("user").find().toArray();
     res.status(200).json({ user: ">---->", data: users });
   } catch (err) {
@@ -21,11 +21,11 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const getUserById = async (req, res) => {
+const getCardById = async (req, res) => {
   try {
     const { id } = req.params;
     const userObjectId = new ObjectId(id);
-    const db = await connectDB();
+    const db = await getDB();
     const condition = { _id: userObjectId };
     const data = await db.collection("user").findOne(condition);
     res.status(200).json({ data });
@@ -35,4 +35,4 @@ const getUserById = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getStart, getUserById };
+module.exports = { getAllCard, getStart, getCardById };
