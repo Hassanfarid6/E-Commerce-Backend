@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // Routes "/" is important 
 app.use("/", userRoutes);
 app.use("/user", userRoutes);
-app.use("/user/:id", userRoutes);
+app.use("/card", userRoutes);
 
 // Server start krne k liye
 const startServer = async () => {

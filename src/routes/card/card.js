@@ -1,4 +1,4 @@
-const { getDB } = require("../../db");
+const { getDB, connectDB } = require("../../db");
 const { ObjectId } = require("mongodb");
 
 const getStart = async (req, res) => {
@@ -13,11 +13,11 @@ const getStart = async (req, res) => {
 const getAllCard = async (req, res) => {
   try {
     const db = await getDB();
-    const users = await db.collection("user").find().toArray();
-    res.status(200).json({ user: ">---->", data: users });
+    const cards = await db.collection("user").find().toArray();
+    res.status(200).json({ card: ">---->", data: cards });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to fetch users" });
+    res.status(500).json({ error: "Failed to fetch cards" });
   }
 };
 
