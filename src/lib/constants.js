@@ -1,3 +1,3 @@
-const DB_NAME = "tms";
+const DB_NAME = "card";
 
 module.exports = { DB_NAME };

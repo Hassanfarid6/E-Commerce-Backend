@@ -13,7 +13,7 @@ const getStart = async (req, res) => {
 const getAllCard = async (req, res) => {
   try {
     const db = await getDB();
-    const cards = await db.collection("user").find().toArray();
+    const cards = await db.collection("card").find().toArray();
     res.status(200).json({ card: ">---->", data: cards });
   } catch (err) {
     console.error(err);
