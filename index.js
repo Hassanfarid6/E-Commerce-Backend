@@ -13,12 +13,13 @@ const PORT = process.env.PORT;
 const HOST = "127.0.0.1";
 // server.js ya index.js mein sabse upar add karo
 
-app.use(cors()); // ← Yeh line daal do bas!
+// app.use(cors()); // ← Yeh line daal do bas!
 
 // Ya agar sirf specific domain allow karna hai to:
-// app.use(cors({
-//   origin: "http://localhost:3000"
-// }));
+app.use(cors({
+  origin: "http://localhost:3000",
+  origin: "https://ecommercewebhf.vercel.app/"
+}));
 
 // Middleware
 app.use(bodyParser.json());
