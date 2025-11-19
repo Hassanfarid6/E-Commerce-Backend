@@ -5,7 +5,7 @@ const CardSchema = new Schema(
   {
     title: {
       type: String,
-      // required: true,
+      required: true,
       trim: true,
     },
 
@@ -16,13 +16,13 @@ const CardSchema = new Schema(
 
     price: {
       type: Number,
-      // required: true,
+      required: true,
     },
 
     sku: {
       type: String,
       unique: true,
-      // required: true,
+      required: true,
     },
 
     quantity: {
@@ -36,7 +36,7 @@ const CardSchema = new Schema(
       // required: true
     },
   },
-  // { timestamps: true }
+  { timestamps: true }
 );
 
 const Card = mongoose.model("Card", CardSchema);
