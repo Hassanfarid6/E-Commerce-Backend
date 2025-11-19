@@ -16,9 +16,9 @@ const HOST = "127.0.0.1";
 app.use(cors()); // ← Yeh line daal do bas!
 
 // Ya agar sirf specific domain allow karna hai to:
-app.use(cors({
-  origin: "http://localhost:3000"
-}));
+// app.use(cors({
+//   origin: "http://localhost:3000"
+// }));
 
 // Middleware
 app.use(bodyParser.json());
