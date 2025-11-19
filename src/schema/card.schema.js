@@ -33,7 +33,7 @@ const CardSchema = new Schema(
     image: {
       type: String, // URL of the image
       default: "",
-      // required: true
+      required: true
     },
   },
   { timestamps: true }
