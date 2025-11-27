@@ -17,11 +17,15 @@ const HOST = "127.0.0.1";
 
 // Ya agar sirf specific domain allow karna hai to:
 app.use(cors({
-  origin: "https://ecommercewebhf.vercel.app/card",
-  origin: "https://ecommercewebhf.vercel.app",
-  origin: "http://localhost:3000",
-  origin: "http://localhost:5000",
-}));    
+   origin: [
+      "https://ecommercewebhf.vercel.app",
+      "https://ecommercewebhf.vercel.app/card",
+      "http://localhost:3000",
+      "http://localhost:5000"
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+  }));    
 // https://ecommercewebhf.vercel.app/
 
 // Middleware
