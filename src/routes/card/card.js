@@ -27,7 +27,7 @@ const getCardById = async (req, res) => {
     const userObjectId = new ObjectId(id);
     const db = await getDB();
     const condition = { _id: userObjectId };
-    const data = await db.collection("user").findOne(condition);
+    const data = await db.collection("card").findOne(condition);
     res.status(200).json({ data });
   } catch (err) {
     console.log(err);

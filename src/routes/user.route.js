@@ -1,15 +1,15 @@
 const express = require("express");
-const userRoutes = express.Router();
+const cardRoutes = express.Router();
 const { getAllCard, getCardById } = require("./card/card");
-const { createCard, deleteUser, updateUser } = require("./card/add.card");
+const { createCard, deleteCard, updateCard } = require("./card/add.card");
 
 // CRUD routes
-// userRoutes.get("/", getStart); // users
-userRoutes.get("/", getAllCard); // Get all users
-userRoutes.get("/user/:id", getCardById);
-userRoutes.post("/card", createCard); // post single user
-userRoutes.delete("/user/:id", deleteUser); // Delete user
-userRoutes.put("/user/:id", updateUser); // Update user
+// cardRoutes.get("/", getStart); // card
+cardRoutes.get("/", getAllCard); // Get all card
+cardRoutes.get("/card/:id", getCardById);
+cardRoutes.post("/card", createCard); // post single user
+cardRoutes.delete("/card/:id", deleteCard); // Delete card
+cardRoutes.put("/card/:id", updateCard); // Update card
 
 
-module.exports = userRoutes;
+module.exports = cardRoutes;

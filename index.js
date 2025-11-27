@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { getDB, connectDB } = require("./src/db");
 const app = express();
-const userRoutes = require("./src/routes/user.route");
+const cardRoutes = require("./src/routes/user.route");
 // Is used if my project is runing in 5000 with
 // the help of this i can use 3000 also 
 const cors = require('cors');
@@ -17,17 +17,20 @@ const HOST = "127.0.0.1";
 
 // Ya agar sirf specific domain allow karna hai to:
 app.use(cors({
+  origin: "https://ecommercewebhf.vercel.app/card",
+  origin: "https://ecommercewebhf.vercel.app",
   origin: "http://localhost:3000",
-  origin: "https://ecommercewebhf.vercel.app/"
-}));
+  origin: "http://localhost:5000",
+}));    
+// https://ecommercewebhf.vercel.app/
 
 // Middleware
 app.use(bodyParser.json());
 
 // Routes "/" is important 
-app.use("/", userRoutes);
-app.use("/user", userRoutes);
-app.use("/card", userRoutes);
+app.use("/", cardRoutes);
+app.use("/card", cardRoutes);
+app.use("/card/:id", cardRoutes);
 
 // Server start krne k liye
 const startServer = async () => {

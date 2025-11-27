@@ -1,7 +1,7 @@
 const express = require("express");
 const { connectDB, getDB } = require("../../db");
 const { ObjectId } = require("mongodb");
-const { Card } = require("../../schema/card.schema")
+// const { Card } = require("../../schema/card.schema")
 const { cardValidation } = require("../../validations/card.validation");
 
 const createCard = async (req, res) => {
@@ -28,13 +28,13 @@ const createCard = async (req, res) => {
   }
 };
 
-const deleteUser = async (req, res) => {
+const deleteCard = async (req, res) => {
   try {
     const { id } = req.params;
     const userObjectId = new ObjectId(id);
-    const db = await connectDB();
+    const db = await getDB();
     const condition = { _id: userObjectId };
-    await db.collection("cards").deleteOne(condition);
+    await db.collection("card").deleteOne(condition);
     res.status(200).json({ data: id, message: "Your cards has been deleted" });
   } catch (err) {
     console.log(err);
@@ -43,21 +43,21 @@ const deleteUser = async (req, res) => {
 };
 
 // Update krne k liye  put method use hota hai
-const updateUser = async (req, res) => {
+const updateCard = async (req, res) => {
   try {
     const { id } = req.params;
     const payload = req.body;
     const userObjectId = new ObjectId(id);
     const db = await connectDB();
     const condition = { _id: userObjectId };
-    const existingUser = await db.collection("cards").findOne(condition);
+    const existingUser = await db.collection("card").findOne(condition);
 
     const newPayload = {
       ...existingUser,
       ...payload,
     };
 
-    await db.collection("cards").updateOne(condition, { $set: newPayload });
+    await db.collection("card").updateOne(condition, { $set: newPayload });
     // updateMany
 
     res
@@ -70,4 +70,4 @@ const updateUser = async (req, res) => {
 };
 
 
-module.exports = { createCard, deleteUser, updateUser};
+module.exports = { createCard, deleteCard, updateCard};
